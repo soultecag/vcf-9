@@ -1,0 +1,255 @@
+{
+    "sddcId": "vcf-01",
+    "vcfInstanceName": "vbuenzli-fleet-01",
+    "workflowType": "VCF",
+    "version": "9.0.0.0",
+    "ceipEnabled": true,
+    "fipsEnabled": true,
+    "skipEsxThumbprintValidation": true,
+    "skipGatewayPingValidation": true,
+    "sddcManagerSpec": {
+      "rootUserCredentials": {
+        "username": "root",
+        "password": "VMware123!VMware123!"
+      },
+      "secondUserCredentials": {
+        "username": "vcf",
+        "password": "VMware123!VMware123!"
+      },
+      "hostname": "sddcmgr",
+      "useExistingDeployment": true,
+      "rootPassword": "VMware123!VMware123!",
+      "sshPassword": "VMware123!VMware123!",
+      "localUserPassword": "VMware123!VMware123!"
+    },
+    "dnsSpec": {
+      "nameservers": [
+        "172.29.31.1"
+      ],
+      "subdomain": "vbuenzli.lab"
+    },
+    "ntpServers": [
+      "172.29.31.1"
+    ],
+    "vcenterSpec": {
+      "vcenterHostname": "vc",
+      "rootVcenterPassword": "VMware123!VMware123!",
+      "vmSize": "tiny",
+      "storageSize": "",
+      "adminUserSsoPassword": "VMware123!VMware123!",
+      "ssoDomain": "vsphere.local",
+      "useExistingDeployment": false
+    },
+    "hostSpecs": [
+      {
+        "hostname": "hades.vbuenzli.lab",
+        "credentials": {
+          "username": "root",
+          "password": "VMware1!"
+        }
+      }
+    ],
+    "clusterSpec": {
+      "clusterName": "VCF-Mgmt-Cluster",
+      "datacenterName": "VCF-Datacenter",
+      "clusterEvcMode": "",
+      "clusterImageEnabled": true
+    },
+    "datastoreSpec": {
+      "vsanSpec": {
+        "failuresToTolerate": 0,
+        "vsanDedup": false,
+        "esaConfig": {
+          "enabled": true
+        },
+        "datastoreName": "vsanDatastore"
+      }
+    },
+    "nsxtSpec": {
+      "nsxtManagerSize": "medium",
+      "nsxtManagers": [
+        {
+          "hostname": "nsxmgr"
+        }
+      ],
+      "vipFqdn": "nsx",
+      "useExistingDeployment": false,
+      "nsxtAdminPassword": "VMware123!VMware123!",
+      "nsxtAuditPassword": "VMware123!VMware123!",
+      "rootNsxtManagerPassword": "VMware123!VMware123!",
+      "skipNsxOverlayOverManagementNetwork": true,
+      "ipAddressPoolSpec": {
+        "name": "tep01",
+        "description": "ESXi Host Overlay TEP IP Pool",
+        "subnets": [
+          {
+            "cidr": "172.60.0.0/24",
+            "ipAddressPoolRanges": [
+              {
+                "start": "172.60.0.150",
+                "end": "172.60.0.160"
+              }
+            ],
+            "gateway": "172.60.0.1"
+          }
+        ]
+      },
+      "transportVlanId": "60"
+    },
+    "vcfOperationsSpec": {
+      "nodes": [
+        {
+          "hostname": "vcfo",
+          "rootUserPassword": "VMware123!VMware123!",
+          "type": "master"
+        }
+      ],
+      "adminUserPassword": "VMware123!VMware123!",
+      "applianceSize": "small",
+      "useExistingDeployment": false,
+      "loadBalancerFqdn": ""
+    },
+    "vcfOperationsFleetManagementSpec": {
+      "hostname": "vcffma",
+      "rootUserPassword": "VMware123!VMware123!",
+      "adminUserPassword": "VMware123!VMware123!",
+      "useExistingDeployment": false
+    },
+    "vcfOperationsCollectorSpec": {
+      "hostname": "vcfoc",
+      "applicationSize": "small",
+      "rootUserPassword": "VMware123!VMware123!",
+      "useExistingDeployment": false
+    },
+    "vcfAutomationSpec": {
+      "hostname": "vcfa",
+      "adminUserPassword": "VMware123!VMware123!",
+      "ipPool": [
+        "172.29.31.31",
+        "172.29.31.32"
+      ],
+      "nodePrefix": "vcfa",
+      "internalClusterCidr": "198.18.0.0/15",
+      "useExistingDeployment": false
+    },
+    "networkSpecs": [
+      {
+        "networkType": "MANAGEMENT",
+        "subnet": "172.29.31.0/24",
+        "gateway": "172.29.31.1",
+        "subnetMask": null,
+        "includeIpAddress": null,
+        "includeIpAddressRanges": null,
+        "vlanId": "0",
+        "mtu": "1500",
+        "teamingPolicy": "loadbalance_loadbased",
+        "activeUplinks": [
+          "uplink1"
+        ],
+        "standbyUplinks": [],
+        "portGroupKey": "DVPG_FOR_MANAGEMENT"
+      },
+      {
+        "networkType": "VM_MANAGEMENT",
+        "subnet": "172.29.31.0/24",
+        "gateway": "172.29.31.1",
+        "subnetMask": null,
+        "includeIpAddress": null,
+        "includeIpAddressRanges": null,
+        "vlanId": "0",
+        "mtu": "1500",
+        "teamingPolicy": "loadbalance_loadbased",
+        "activeUplinks": [
+          "uplink1"
+        ],
+        "standbyUplinks": [],
+        "portGroupKey": "DVPG_FOR_VM_MANAGEMENT"
+      },
+      {
+        "networkType": "VMOTION",
+        "subnet": "172.40.0.0/24",
+        "gateway": "172.40.0.1",
+        "subnetMask": null,
+        "includeIpAddress": null,
+        "includeIpAddressRanges": [
+          {
+            "startIpAddress": "172.40.0.150",
+            "endIpAddress": "172.40.0.160"
+          }
+        ],
+        "vlanId": "40",
+        "mtu": "8900",
+        "teamingPolicy": "loadbalance_loadbased",
+        "activeUplinks": [
+          "uplink1"
+        ],
+        "standbyUplinks": [],
+        "portGroupKey": "DVPG_FOR_VMOTION"
+      },
+      {
+        "networkType": "VSAN",
+        "subnet": "172.50.0.0/24",
+        "gateway": "172.50.0.1",
+        "subnetMask": null,
+        "includeIpAddress": null,
+        "includeIpAddressRanges": [
+          {
+            "startIpAddress": "172.50.0.150",
+            "endIpAddress": "172.50.0.160"
+          }
+        ],
+        "vlanId": "50",
+        "mtu": "8900",
+        "teamingPolicy": "loadbalance_loadbased",
+        "activeUplinks": [
+          "uplink1"
+        ],
+        "standbyUplinks": [],
+        "portGroupKey": "DVPG_FOR_VSAN"
+      }
+    ],
+    "dvsSpecs": [
+      {
+        "dvsName": "sddc1-cl01-vds01",
+        "networks": [
+          "MANAGEMENT",
+          "VM_MANAGEMENT",
+          "VMOTION",
+          "VSAN"
+        ],
+        "mtu": "8900",
+        "nsxtSwitchConfig": {
+          "transportZones": [
+            {
+              "transportType": "OVERLAY",
+              "name": "vcf-overlay-TZ"
+            },
+            {
+              "transportType": "VLAN",
+              "name": "vcf-vlan-TZ"
+            }
+          ],
+          "hostSwitchOperationalMode": "STANDARD"
+        },
+        "vmnicsToUplinks": [
+          {
+            "uplink": "uplink1",
+            "id": "vmnic0"
+          }
+        ],
+        "nsxTeamings": [
+          {
+            "standByUplinks": [],
+            "policy": "LOADBALANCE_SRCID",
+            "activeUplinks": [
+              "uplink1"
+            ]
+          }
+        ],
+        "lagSpecs": null,
+        "vmnics": [
+          "vmnic0"
+        ]
+      }
+    ]
+  }
