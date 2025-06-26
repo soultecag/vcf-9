@@ -1,6 +1,6 @@
-# soulTec AG -  PowerCLI Collection
+# soulTec AG -  VMware Cloud Foundation 9 
 
-This repository contains various PowerCLI Scripts and Snippets.
+This repository contains helpful content about VMware Cloud Foundation 9.
 
 ## Authors
 
@@ -8,5 +8,6 @@ This repository contains various PowerCLI Scripts and Snippets.
 - yannick.gerber[at]soultec.ch
 
 [https://soultec.ch](https://soultec.ch)
+
 ## License
 MIT
